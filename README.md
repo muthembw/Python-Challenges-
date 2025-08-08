@@ -8,9 +8,9 @@ I'll be uploading challenges regularly. Follow along to see how long I can keep 
 
 ---
 
-## 📍 Challenge #1: Name the Country
+## 📍 Challenge #1: Guess the Country
 
-**Date:** December 7, 2024  
+**Date:** August 8, 2025
 **Tags:** `Python - Intermediate`, `Computer Science`, `Solved`, `Quiz Game`
 
 ### 🎯 Objective
