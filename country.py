@@ -29,6 +29,16 @@ def save_to_leaderboard(player_name, total_score, filename="Leaderboard.csv"):
     with open(filename, mode="a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow([player_name, total_score])
+def display_leaderboard(filename="Leaderboard.csv"):
+    try:
+        with open(filename, mode="r", newline="") as file:
+            reader = csv.reader(file)
+            leaderboard = sorted(reader, key=lambda row: int(row[1]), reverse=True)
+            print("\n🏆 Leaderboard (Top Scores):")
+            for rank, entry in enumerate(leaderboard, 1):
+                print(f"{rank}. {entry[0]} - {entry[1]} points")
+    except FileNotFoundError:
+        print("Leaderboard file not found.")
 
 def start_game():
     player_name = input("Enter your name: ").strip()
@@ -40,9 +50,15 @@ def start_game():
         "Kenya", "Uganda", "Tanzania", "Rwanda", "Burundi", "South Sudan", "Somalia",
         "Ethiopia", "Djibouti", "Eritrea", "Sudan", "South Africa", "Zimbabwe", "Zambia",
         "Malawi", "Mozambique", "Angola", "Namibia", "Botswana", "Europe", "Germany",
-        "France", "Italy", "Spain", "Portugal", "Netherlands", "Belgium", "Sweden",
+        "France", "Italy", "Spain", "Portugal", "Netherlands", "Belgium", "Sweden","India",
+        "China", "Japan", "South Korea", "North Korea", "Vietnam", "Thailand", "Malaysia", 
         "Norway", "Finland", "Denmark", "Poland", "Czech Republic", "Slovakia", "Hungary",
-        "Austria", "Switzerland", "Greece", "Turkey"
+        "Austria", "Switzerland", "Greece", "Turkey", "Liechtenstein", "Luxembourg", "Malta",
+        "Iceland", "Ireland", "United Kingdom", "Russia", "Ukraine", "Belarus", "Lithuania", 
+        "Latvia", "Estonia", "Moldova", "Romania", "Bulgaria", "Serbia", "Croatia", "Bosnia and Herzegovina",
+          "Montenegro", "North Macedonia", "Albania", "Kosovo", "Slovenia", "Egypt", "Libya", "Tunisia", "Algeria",
+            "Morocco", "Western Sahara", "Mauritania", "Mali", "Niger", "Chad", "Cameroon", "Central African Republic", 
+            "Gabon", "Republic of the Congo", "Democratic Republic of the Congo","Iran", "Iraq", "Syria", "Lebanon", "Jordan",
     ]
 
     selected_countries = random.sample(countries, 10) 
