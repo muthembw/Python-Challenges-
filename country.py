@@ -29,6 +29,7 @@ def save_to_leaderboard(player_name, total_score, filename="Leaderboard.csv"):
     with open(filename, mode="a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow([player_name, total_score])
+        
 def display_leaderboard(filename="Leaderboard.csv"):
     try:
         with open(filename, mode="r", newline="") as file:
