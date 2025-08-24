@@ -65,38 +65,5 @@ python scriptname.py
 Each challenge runs independently.
 Some will display outputs directly in the console.
 Others (like the clock or DNA analyzer) open an interactive GUI/web app.
+---
 
-🧩 Challenges
-🗺️ Challenge 1: Country Guess Game (country.py)
-Core Principles: Loops, string manipulation, conditionals, CSV file handling
-Description: Guess the hidden country name with hints revealed one letter at a time.
-Bonus: A leaderboard stored in .csv keeps track of top scores.
-
-🔐 Challenge 2: Cybersecurity Quiz (CyberSec.py)
-Core Principles: Lists & dictionaries for Q&A, control flow, scoring logic
-Description: A fun multiple-choice quiz that tests cybersecurity knowledge.
-Replayability: Play multiple rounds and track your performance.
-
-⏰ Challenge 3: Digital Clock (DigitalClock.py)
-Core Principles: GUI design (Tkinter), time/date libraries, infinite loops
-Description: Displays a real-time digital clock with both time and date in a styled interface.
-
-🧬 Challenge 4: DNA Sequence Analysis (dnaSequence.py + dna_streamlit_app.py)
-Core Principles: String operations, pattern recognition, file input/output
-Description: Analyze DNA sequences  count nucleotides, create complementary strands, calculate GC content, and translate codons.
-Bonus: Built a Streamlit roadmap app to visualize DNA analysis step-by-step interactively.
-
-🌐 Challenge 5: IP Checker (ipChecker.py)
-Core Principles: Regex validation, input parsing, networking basics
-Description: Validates whether an entered IP address is correctly formatted (IPv4/IPv6).
-
-🔑 Challenge 6: Password Strength Checker (password.py)
-Core Principles: Regex, string validation, security concepts
-Description: Validates password strength based on rules like length, uppercase/lowercase, digits, and special characters.
-
-📌 Summary
-This repo is my growing library of Python problem-solving projects.
-Each challenge reinforces coding principles, introduces new tools, and showcases practical problem-solving.
-
-What started as small exercises has become a structured journey toward real-world software skills.
-And this is just the beginning. More challenges are on the way! 🌟
