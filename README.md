@@ -46,7 +46,6 @@ Each challenge focuses on **one or more core programming principles** such as:
 
 Think of it as a roadmap: every challenge builds upon the previous one, reinforcing problem-solving skills while adding new tools to the toolbox.  
 
----
 
 ## 🚀 Getting Started  
 
@@ -57,7 +56,7 @@ Think of it as a roadmap: every challenge builds upon the previous one, reinforc
 ### 💻 Installation  
 Clone the repo and navigate into it:  
 ```bash
-git clone https://github.com/your-username/python-challenges.git
+git clone https://github.com/muthembw/Python-Challenges-.git
 cd python-challenges
 ###▶️ Usage
 Run any script with:
