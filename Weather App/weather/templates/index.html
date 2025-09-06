@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #fff;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background: rgba(0,0,0,0.3);
+            padding: 30px 50px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            width: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin: 5px 0;
+            width: 80%;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #4facfe;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        h1, p {
+            margin: 10px 0;
+        }
+        
+        /* Current Weather Styling */
+        .current-weather {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .current-date-time {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #ffeb3b;
+        }
+        .current-day {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .current-time {
+            font-size: 14px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        /* Forecast Styling */
+        .forecast-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .forecast-day {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 120px;
+            flex: 1;
+            max-width: 140px;
+        }
+        .forecast-date {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .forecast-day-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ffeb3b;
+        }
+        .forecast-temp {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .forecast-desc {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+        .forecast-icon {
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                width: 95%;
+            }
+            .forecast-container {
+                gap: 10px;
+            }
+            .forecast-day {
+                min-width: 100px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Weather App!</h1>
+
+    <!-- Single Form for Name and City -->
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Enter your name (optional)" value="{{ name }}">
+        <input type="text" name="city" placeholder="Enter city for weather" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Greeting -->
+    {% if name %}
+        <p>Hello, <strong>{{ name }}</strong>! 👋 Welcome to our app.</p>
+    {% endif %}
+
+    <!-- Weather Info -->
+    {% if weather_data %}
+        <div class="current-weather">
+            <!-- Current Date and Time -->
+            <div class="current-date-time">
+                <div class="current-day">{{ weather_data.current_date }}</div>
+                <div class="current-time">{{ weather_data.current_time }}</div>
+            </div>
+            
+            <h2>Weather in {{ weather_data.city }}</h2>
+            <p class="forecast-temp">{{ weather_data.temperature }}°C</p>
+            <p class="forecast-desc">{{ weather_data.description }}</p>
+            <img class="forecast-icon" src="http://openweathermap.org/img/wn/{{ weather_data.icon }}@2x.png" alt="Weather Icon">
+        </div>
+
+        {% if daily_forecast %}
+            <h3>7-Day Forecast</h3>
+            <div class="forecast-container">
+                {% for day in daily_forecast %}
+                    <div class="forecast-day">
+                        <div class="forecast-day-name">
+                            {{ day.short_day_name }}
+                        </div>
+                        <div class="forecast-date">
+                            {{ day.formatted_date }}
+                        </div>
+                        <img class="forecast-icon" src="http://openweathermap.org/img/wn/{{ day.icon }}.png" alt="Weather icon">
+                        <div class="forecast-temp">
+                            {{ day.temp }}° / {{ day.max_temp }}°
+                        </div>
+                        <div class="forecast-desc">
+                            {{ day.description }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+
+</body>
+</html>
