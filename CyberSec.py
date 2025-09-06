@@ -1,5 +1,5 @@
 Player_name = input("Enter your name: ").strip()
-print(f"Hello, {Player_name}! Welcome to the Cyber Security Quiz! \n")
+print(f"Hello, {Player_name}! Welcome to the Cyber Security Quiz! \n") 
 
 def start_quiz():
     print(f"\nYour total score is: {total_score}")
@@ -112,6 +112,8 @@ while i < len(quiz):
             print(f" \nIncorrect. The correct answer is: {quiz[i]['Answer']} \n")
             print(f"Security Tip: {security_tips[i]} \n")
             wrong_answers += 1
+            total_score -= 2
+
         break
     i += 1
 start_quiz()
